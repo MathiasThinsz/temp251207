@@ -1,0 +1,214 @@
+{
+  "name": "biotech",
+  "version": "1.0.0",
+  "displayName": "Biotech & Life Sciences",
+  "description": "Project scaffolding for pharmaceutical and biotech development programs",
+  "category": "life-sciences",
+  "tags": [
+    "biotech", "pharmaceutical", "clinical", "regulatory", "FDA", 
+    "drug-development", "clinical-trials", "medical"
+  ],
+  
+  "detection": {
+    "files": [
+      "*.protocol.md",
+      "*CDP*.md",
+      "*IND*.md",
+      "*clinical*.md",
+      "regulatory/*.md"
+    ],
+    "directories": [
+      "regulatory",
+      "clinical",
+      "protocols",
+      "submissions"
+    ],
+    "patterns": [],
+    "keywords": [
+      "clinical development",
+      "clinical trial",
+      "drug development",
+      "pharmaceutical",
+      "biotech",
+      "IND submission",
+      "NDA",
+      "FDA",
+      "EMA",
+      "ICH",
+      "CRO",
+      "patient recruitment",
+      "biostatistics",
+      "data management",
+      "brand launch",
+      "therapeutic area"
+    ]
+  },
+  
+  "mcp": {
+    "servers": [],
+    "skills": []
+  },
+  
+  "templates": [
+    {
+      "id": "clinical-development",
+      "name": "Clinical Development Program",
+      "description": "Complete clinical development planning including CDP, protocols, and regulatory strategy",
+      "subTemplates": [
+        "program-overview",
+        "phase-planning",
+        "regulatory-strategy",
+        "budget-timeline"
+      ]
+    },
+    {
+      "id": "cro-selection",
+      "name": "CRO Selection & Management",
+      "description": "RFP templates, vendor scorecards, and oversight planning",
+      "subTemplates": [
+        "rfp-template",
+        "vendor-evaluation",
+        "contract-checklist",
+        "oversight-plan"
+      ]
+    },
+    {
+      "id": "patient-recruitment",
+      "name": "Patient Recruitment & Retention",
+      "description": "Recruitment strategy, site materials, and retention programs",
+      "subTemplates": [
+        "recruitment-strategy",
+        "digital-marketing",
+        "site-materials",
+        "retention-plan"
+      ]
+    },
+    {
+      "id": "data-management",
+      "name": "Data Management & Biostatistics",
+      "description": "DMP, CRF design, SAP, and database specifications",
+      "subTemplates": [
+        "data-management-plan",
+        "crf-specifications",
+        "statistical-analysis-plan",
+        "database-lock"
+      ]
+    },
+    {
+      "id": "brand-launch",
+      "name": "Brand Strategy & Launch",
+      "description": "Brand positioning, launch planning, and KOL engagement",
+      "subTemplates": [
+        "brand-strategy",
+        "launch-plan",
+        "kol-engagement",
+        "market-access"
+      ]
+    }
+  ],
+  
+  "requiredTools": [],
+  "optionalTools": [
+    {
+      "name": "pandoc",
+      "description": "For document format conversion",
+      "checkCommand": "pandoc --version"
+    }
+  ],
+  
+  "variables": {
+    "PROJECT_NAME": {
+      "type": "string",
+      "description": "Project/program name",
+      "required": true
+    },
+    "COMPOUND_NAME": {
+      "type": "string",
+      "description": "Drug compound identifier (e.g., ABC-123)",
+      "required": false
+    },
+    "INDICATION": {
+      "type": "string",
+      "description": "Target disease/condition",
+      "required": false
+    },
+    "THERAPEUTIC_AREA": {
+      "type": "string",
+      "description": "Therapeutic area classification",
+      "enum": [
+        "Oncology",
+        "Immunology",
+        "Neurology",
+        "Cardiology",
+        "Metabolic",
+        "Infectious Disease",
+        "Rare Disease",
+        "Other"
+      ],
+      "required": false
+    },
+    "DEVELOPMENT_PHASE": {
+      "type": "string",
+      "description": "Current development phase",
+      "enum": [
+        "Preclinical",
+        "Phase 1",
+        "Phase 1/2",
+        "Phase 2",
+        "Phase 2b",
+        "Phase 3",
+        "NDA/BLA",
+        "Post-Marketing"
+      ],
+      "required": false
+    },
+    "SPONSOR_NAME": {
+      "type": "string",
+      "description": "Sponsoring company name",
+      "required": false
+    },
+    "TARGET_REGIONS": {
+      "type": "array",
+      "description": "Target regulatory regions",
+      "items": {
+        "type": "string",
+        "enum": ["US", "EU", "Japan", "China", "ROW"]
+      },
+      "default": ["US"]
+    }
+  },
+  
+  "disclaimers": [
+    "⚠️ All templates are starting points requiring review by qualified professionals",
+    "⚠️ Ensure compliance with applicable regulations (FDA, EMA, ICH guidelines)",
+    "⚠️ Consult regulatory, legal, and medical experts before use in actual programs",
+    "⚠️ Templates do not constitute regulatory or medical advice"
+  ],
+  
+  "references": {
+    "regulatory": [
+      {
+        "name": "ICH E6(R2)",
+        "description": "Good Clinical Practice Guidelines",
+        "url": "https://database.ich.org/sites/default/files/E6_R2_Addendum.pdf"
+      },
+      {
+        "name": "ICH E8(R1)",
+        "description": "General Considerations for Clinical Studies",
+        "url": "https://database.ich.org/sites/default/files/E8-R1_Guideline_Step4_2021_1006.pdf"
+      },
+      {
+        "name": "21 CFR Part 312",
+        "description": "IND Regulations",
+        "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-D/part-312"
+      }
+    ],
+    "standards": [
+      {
+        "name": "CDISC",
+        "description": "Clinical Data Interchange Standards",
+        "url": "https://www.cdisc.org/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "name": "n8n",
+  "version": "1.0.0",
+  "displayName": "n8n Workflow Automation",
+  "description": "Scaffolding for n8n workflow automation projects with AI-assisted development",
+  "category": "automation",
+  "tags": ["n8n", "workflow", "automation", "no-code", "low-code", "ai-agents"],
+  
+  "detection": {
+    "files": [
+      "*.n8n.json",
+      "workflows/*.json",
+      "n8n-*.json"
+    ],
+    "directories": [
+      ".n8n",
+      "workflows",
+      "n8n-data"
+    ],
+    "patterns": [
+      "n8n-nodes-base",
+      "n8n-workflow",
+      "@n8n/n8n-nodes-langchain",
+      "\"type\": \"n8n-nodes-",
+      "\"type\": \"@n8n/"
+    ],
+    "keywords": [
+      "n8n",
+      "workflow automation",
+      "n8n workflow",
+      "automation workflow"
+    ]
+  },
+  
+  "mcp": {
+    "servers": [
+      {
+        "name": "n8n-mcp",
+        "package": "n8n-mcp",
+        "required": true,
+        "description": "MCP server for n8n workflow management",
+        "config": {
+          "MCP_MODE": "stdio",
+          "LOG_LEVEL": "error",
+          "DISABLE_CONSOLE_OUTPUT": "true",
+          "N8N_API_URL": "${env:N8N_API_URL}",
+          "N8N_API_KEY": "${env:N8N_API_KEY}"
+        },
+        "installCommand": "npx n8n-mcp",
+        "documentation": "https://github.com/czlonkowski/n8n-mcp"
+      }
+    ],
+    "skills": [
+      {
+        "name": "n8n-skills",
+        "repository": "https://github.com/czlonkowski/n8n-skills",
+        "required": false,
+        "description": "Expert Claude Code skills for building flawless n8n workflows",
+        "skills": [
+          "n8n-expression-syntax",
+          "n8n-mcp-tools-expert",
+          "n8n-workflow-patterns",
+          "n8n-validation-expert",
+          "n8n-node-configuration",
+          "n8n-code-javascript",
+          "n8n-code-python"
+        ],
+        "installCommand": "/plugin install czlonkowski/n8n-skills"
+      }
+    ]
+  },
+  
+  "templates": [
+    {
+      "id": "basic-workflow",
+      "name": "Basic Workflow Project",
+      "description": "Simple n8n project with webhook trigger and example workflow",
+      "difficulty": "beginner",
+      "estimatedSetupTime": "10 minutes"
+    },
+    {
+      "id": "ai-agent-workflow",
+      "name": "AI Agent Workflow",
+      "description": "n8n workflow with LangChain AI agents and tools",
+      "difficulty": "intermediate",
+      "estimatedSetupTime": "30 minutes",
+      "prerequisites": ["OpenAI API key or compatible LLM"]
+    },
+    {
+      "id": "production-docker",
+      "name": "Production Docker Setup",
+      "description": "Full production n8n environment with Docker, SSL, and monitoring",
+      "difficulty": "advanced",
+      "estimatedSetupTime": "1 hour",
+      "prerequisites": ["Docker", "Domain name (optional)"]
+    },
+    {
+      "id": "multi-workflow",
+      "name": "Multi-Workflow Project",
+      "description": "Project with multiple interconnected workflows",
+      "difficulty": "intermediate",
+      "estimatedSetupTime": "20 minutes"
+    }
+  ],
+  
+  "requiredTools": [
+    {
+      "name": "node",
+      "minVersion": "18.0.0",
+      "checkCommand": "node --version"
+    },
+    {
+      "name": "npm",
+      "minVersion": "9.0.0",
+      "checkCommand": "npm --version"
+    }
+  ],
+  
+  "optionalTools": [
+    {
+      "name": "docker",
+      "description": "Required for containerized deployment",
+      "checkCommand": "docker --version"
+    },
+    {
+      "name": "docker-compose",
+      "description": "Required for multi-container setups",
+      "checkCommand": "docker-compose --version"
+    }
+  ],
+  
+  "variables": {
+    "PROJECT_NAME": {
+      "type": "string",
+      "description": "Name of the project",
+      "required": true,
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "N8N_VERSION": {
+      "type": "string",
+      "description": "n8n Docker image version",
+      "default": "latest"
+    },
+    "N8N_PORT": {
+      "type": "number",
+      "description": "Port for n8n web interface",
+      "default": 5678
+    },
+    "N8N_PROTOCOL": {
+      "type": "string",
+      "enum": ["http", "https"],
+      "default": "http"
+    },
+    "N8N_HOST": {
+      "type": "string",
+      "description": "Hostname for n8n",
+      "default": "localhost"
+    },
+    "ENABLE_AI_TOOLS": {
+      "type": "boolean",
+      "description": "Include AI/LangChain node configurations",
+      "default": false
+    },
+    "INCLUDE_MONITORING": {
+      "type": "boolean",
+      "description": "Include Prometheus/Grafana monitoring stack",
+      "default": false
+    }
+  },
+  
+  "hooks": {
+    "postScaffold": [
+      {
+        "description": "Initialize n8n-mcp configuration",
+        "command": "mkdir -p .claude && echo '{\"mcpServers\":{}}' > .claude/settings.local.json"
+      },
+      {
+        "description": "Create environment file from template",
+        "command": "cp .env.example .env 2>/dev/null || true"
+      }
+    ],
+    "validate": [
+      {
+        "description": "Validate workflow JSON syntax",
+        "command": "node -e \"JSON.parse(require('fs').readFileSync('workflows/*.json', 'utf8'))\" 2>/dev/null || true"
+      }
+    ]
+  }
+}
