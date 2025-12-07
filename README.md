@@ -26,13 +26,13 @@ Let me first explore this project to understand its architecture, then I'll give
 
 ## Summary of Deliverables
 
-[View Architecture Document](computer:///mnt/user-data/outputs/project-scaffolder-architecture.md) - The complete 700+ line architectural blueprint
+[View Architecture Document](project-scaffolder-architecture.md) - The complete 700+ line architectural blueprint
 
 **Additional Implementation Files:**
-- [n8n Plugin Manifest](computer:///mnt/user-data/outputs/n8n-plugin-manifest.json) - Ready-to-use plugin.json for n8n projects
-- [n8n SKILL.md](computer:///mnt/user-data/outputs/n8n-SKILL.md) - Complete AI guidance for n8n scaffolding
-- [Biotech Plugin Manifest](computer:///mnt/user-data/outputs/biotech-plugin-manifest.json) - Plugin config for life sciences projects
-- [Plugin Development Guide](computer:///mnt/user-data/outputs/PLUGIN_DEVELOPMENT.md) - Guide for adding unknown future project types
+- [n8n Plugin Manifest](n8n-plugin-manifest.json) - Ready-to-use plugin.json for n8n projects
+- [n8n SKILL.md](n8n-SKILL.md) - Complete AI guidance for n8n scaffolding
+- [Biotech Plugin Manifest](biotech-plugin-manifest.json) - Plugin config for life sciences projects
+- [Plugin Development Guide](PLUGIN_DEVELOPMENT.md) - Guide for adding unknown future project types
 
 ---
 
