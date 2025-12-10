@@ -481,6 +481,161 @@ Se detaljerad breakdown per dag/vecka
 
 ## 📝 Prompting-guide för läkemedelsbranschen
 
+### 🎓 Meta-prompting: Få hjälp att skriva bättre prompts
+
+**Osäker på hur du ska formulera din fråga?** Låt Claude hjälpa dig skapa den perfekta prompten!
+
+#### Metod 1: Beskriv vad du vill uppnå
+
+Istället för att försöka skriva den perfekta prompten direkt, beskriv bara vad du vill göra:
+
+```
+Jag behöver granska ett regulatoriskt dokument (Module 2.5) 
+för en EU CTD-submission. Jag vill kontrollera att allt är 
+korrekt enligt ICH M4-standarden och få en färgkodad 
+checklista som visar vad som är bra och vad som saknas.
+
+Kan du hjälpa mig formulera en bra prompt för detta?
+```
+
+**Claude kommer då att:**
+1. Ställa förtydligande frågor
+2. Föreslå en strukturerad prompt
+3. Förklara varför prompten är utformad på ett visst sätt
+4. Ge dig möjlighet att justera innan du kör den
+
+---
+
+#### Metod 2: Ge ett exempel och be om förbättring
+
+Om du har en enkel idé, be Claude göra den bättre:
+
+```
+Jag har denna enkla prompt:
+"Läs dokumentet och kolla om det är rätt"
+
+Men jag vill egentligen:
+- Kontrollera specifika ICH M4-krav
+- Få en strukturerad output med färgkoder
+- Se exakt vad som saknas
+
+Kan du skriva om den här prompten så den ger bättre resultat?
+```
+
+---
+
+#### Metod 3: Lär av exempel
+
+Be Claude förklara en befintlig prompt:
+
+```
+Jag såg denna prompt i guiden:
+
+[klistra in exempel-prompt här]
+
+Kan du förklara:
+1. Varför den är strukturerad på detta sätt?
+2. Vilka delar är viktigast?
+3. Hur kan jag anpassa den för mitt specifika dokument?
+```
+
+---
+
+#### Metod 4: Iterativ förbättring
+
+Börja enkelt och förbättra steg för steg:
+
+```
+Steg 1: "Analysera denna offert"
+
+Steg 2 (efter feedback från Claude): 
+"Okej, men jag behöver också se prisjämförelse och timeline"
+
+Steg 3 (Claude föreslår):
+"Analysera offerten och extrahera: pris, timeline, leveransvillkor..."
+
+Steg 4 (du justerar):
+"Perfekt! Lägg även till kvalitetsmetriker och erfarenhet"
+```
+
+---
+
+#### Användbara meta-prompts för att komma igång:
+
+**För dokumentanalys:**
+```
+Jag har [typ av dokument] och behöver [specifikt resultat].
+Vilken information behöver jag inkludera i min prompt för 
+att få bästa möjliga resultat?
+```
+
+**För standardisering:**
+```
+Jag kommer att göra [denna typ av analys] regelbundet.
+Hjälp mig skapa en återanvändbar prompt-mall som jag bara 
+kan fylla i med nya dokument varje gång.
+```
+
+**För compliance:**
+```
+Detta dokument måste följa [standard/regelverk].
+Vilka specifika kontrollpunkter ska jag be dig verifiera,
+och hur ska jag strukturera prompten för att få en 
+komplett granskning?
+```
+
+**För komplexa workflows:**
+```
+Jag behöver göra följande steg:
+1. [Steg 1]
+2. [Steg 2]
+3. [Steg 3]
+
+Ska jag skriva en stor prompt eller dela upp detta?
+Hur blir mest effektivt?
+```
+
+---
+
+#### Tips för effektiv meta-prompting:
+
+✅ **Var konkret om slutmålet** - inte bara vad du vill göra, utan varför  
+✅ **Nämn din bransch/domän** - "läkemedelsindustri", "regulatoriska dokument"  
+✅ **Beskriv dina begränsningar** - "jag är inte regulatorisk expert"  
+✅ **Ge exempel på input** - "dokumentet ser ut så här..."  
+✅ **Beskriv önskad output** - "jag vill ha en Excel-fil med..."  
+
+❌ **Anta inte att Claude vet din situation** - var explicit  
+❌ **Hoppa inte över kontext** - ju mer bakgrund, desto bättre  
+
+---
+
+#### Exempel på meta-prompt-konversation:
+
+```
+Du: "Jag har 50 CRO-offerter att jämföra. Hur ska jag prompta 
+     för att få en effektiv jämförelse?"
+
+Claude: "För att hjälpa dig bäst behöver jag veta:
+         1. Vilka parametrar är viktigast för jämförelsen?
+         2. Vill du rankning eller bara jämförelse?
+         3. Finns det specifika red flags du letar efter?
+         4. Vilket format vill du ha output i?"
+
+Du: "Viktigast är pris och therapeutic area-erfarenhet. 
+     Ja, jag vill ha rankning. Red flags är om de saknar 
+     oncology-erfarenhet eller har audit findings. 
+     Output ska vara Excel."
+
+Claude: "Perfekt! Här är en optimerad prompt för ditt use case:
+         [genererar skräddarsydd prompt]
+         
+         Vill du att jag förklarar varför jag strukturerade 
+         den på detta sätt?"
+```
+
+---
+
 ### Grundprinciper för dokumentarbete
 
 **1. Definiera kontexten tydligt**
@@ -1046,6 +1201,7 @@ Innan du börjar arbeta, kontrollera att du har:
 - [ ] Python-paket installerade (pandas, openpyxl, etc.)
 - [ ] Testat att skapa en enkel fil med Cline
 - [ ] Läst igenom prompting-guiden för din bransch
+- [ ] Förstår hur man använder meta-prompting för att få hjälp
 - [ ] Satt utgiftsgräns i Anthropic Console (valfritt men rekommenderat)
 - [ ] Förstår att claude.ai Pro INTE behövs för Cline
 
@@ -1053,5 +1209,4 @@ Innan du börjar arbeta, kontrollera att du har:
 
 **Lycka till med dina AI-projekt! 🎉**
 
-*Senast uppdaterad: December 2025*
-
+*Senast uppdaterad: Januari 2025*
